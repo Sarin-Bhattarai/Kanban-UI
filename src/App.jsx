@@ -1,3 +1,5 @@
+import Spinner from "./components/Spinner";
+
 function App() {
   return (
     <div>
