@@ -119,3 +119,126 @@ body {
   height: 9.6rem;
   width: auto;
 }
+/* Other css for whole app*/
+
+/* Form css */
+.register-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  background: #2e3e40;
+  color: white;
+}
+
+.register-left {
+  flex: 1;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: white;
+}
+
+.register-form {
+  width: 70%;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logoText {
+  font-size: 3rem;
+  position: absolute;
+  top: 20px; /* Adjust this value to control the distance from the top */
+  left: 20px; /* Adjust this value to control the distance from the left */
+  margin: 0; /* Remove any default margins */
+  animation: slideIn 3s ease-out;
+  color: white; /* Make the logo color white */
+}
+
+.register-form label {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.register-button {
+  width: 100%;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register-button:hover {
+  background-color: #3e8e41;
+}
+
+.register-right {
+  flex: 1;
+  background: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+  color: white;
+}
+
+.register-right h2 {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+}
+
+.register-right .quote {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.register-right .user-info {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.register-testimonial {
+  display: flex;
+  gap: 10px;
+}
+
+.arrow-button {
+  background-color: white;
+  color: var(--primary-color);
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.arrow-button:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+/* Form css */
