@@ -1,4 +1,36 @@
+import { useState } from "react";
+
+const testimonials = [
+  {
+    quote:
+      "Search and find your urgent task is now easier than ever. Just browse and see all sorts of tasks.",
+    userInfo: "Matheus Nunes, UI Designer at Google",
+  },
+  {
+    quote:
+      "This platform has streamlined our workflow immensely. It's a game changer for productivity.",
+    userInfo: "Sophia Lee, Product Manager at Amazon",
+  },
+  {
+    quote:
+      "Finding the right tasks and managing them has never been so simple and intuitive. I love it.",
+    userInfo: "Michael Tan, Software Engineer at Microsoft",
+  },
+];
+
 function Register() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
     <div className="register-container">
       <div className="register-left">
@@ -23,15 +55,16 @@ function Register() {
       </div>
 
       <div className="register-right">
-        <h2>What’s our Jobseekers Said.</h2>
-        <p className="quote">
-          “Search and find your dream job is now easier than ever. Just browse a
-          job and apply if you need to.”
-        </p>
-        <p className="user-info">Mas Parjono, UI Designer at Google</p>
+        <h2>What our Clients Said.</h2>
+        <p className="quote">“{testimonials[currentIndex].quote}”</p>
+        <p className="user-info">{testimonials[currentIndex].userInfo}</p>
         <div className="register-testimonial">
-          <button className="arrow-button">←</button>
-          <button className="arrow-button">→</button>
+          <button className="arrow-button" onClick={handlePrev}>
+            ←
+          </button>
+          <button className="arrow-button" onClick={handleNext}>
+            →
+          </button>
         </div>
       </div>
     </div>
