@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Spinner from "../../../components/Spinner";
+import { useRegisterUser } from "../hooks/useRegister";
 
 const testimonials = [
   {
@@ -23,6 +25,15 @@ const testimonials = [
 
 function Register() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const { registerUser, isRegistering } = useRegisterUser();
+
+  if (isRegistering) return <Spinner />;
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
@@ -34,6 +45,11 @@ function Register() {
     );
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    registerUser(formData);
+  };
+
   return (
     <div className="register-container">
       <div className="register-left">
@@ -41,15 +57,38 @@ function Register() {
           Ka<span style={{ color: "#4CAF50" }}>n</span>ban
         </h1>
         <h2>Please Enter your Account Details</h2>
-        <form className="register-form">
+
+        <form className="register-form" onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" placeholder="John Doe" />
+          <input
+            type="text"
+            id="name"
+            placeholder="John Doe"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          />
 
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" placeholder="johndoe@gmail.com" />
+          <input
+            type="email"
+            id="email"
+            placeholder="johndoe@gmail.com"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
+          />
 
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" placeholder="••••••••" />
+          <input
+            type="password"
+            id="password"
+            placeholder="••••••••"
+            value={formData.password}
+            onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
+            }
+          />
 
           <button type="submit" className="register-button">
             Register
