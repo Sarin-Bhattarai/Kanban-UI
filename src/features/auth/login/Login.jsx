@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLoginUser } from "../hooks/useLogin";
 
 function Login() {
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const { loginUser, isLogging } = useLoginUser();
+
   return (
     <div className="login-container">
       <div className="login-card">
