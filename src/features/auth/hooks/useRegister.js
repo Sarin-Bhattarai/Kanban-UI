@@ -7,7 +7,11 @@ export function useRegisterUser() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
-  const { mutate: registerUser, isLoading: isRegistering } = useMutation({
+  const {
+    mutate: registerUser,
+    isLoading: isRegistering,
+    error,
+  } = useMutation({
     mutationFn: registerUserApi,
     onSuccess: () => {
       toast.success("Account has been registered successfully");
@@ -16,8 +20,13 @@ export function useRegisterUser() {
         queryKey: ["user"],
       });
     },
-    onError: (err) => toast.error(err.message),
+    onError: (error) => {
+      const message =
+        error.response?.data?.message ||
+        "An error occurred during registration";
+      toast.error(message);
+    },
   });
 
-  return { registerUser, isRegistering };
+  return { registerUser, isRegistering, error };
 }

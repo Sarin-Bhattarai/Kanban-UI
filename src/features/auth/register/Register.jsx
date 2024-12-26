@@ -31,7 +31,7 @@ function Register() {
     password: "",
   });
 
-  const { registerUser, isRegistering } = useRegisterUser();
+  const { registerUser, isRegistering, error } = useRegisterUser();
 
   if (isRegistering) return <Spinner />;
 
